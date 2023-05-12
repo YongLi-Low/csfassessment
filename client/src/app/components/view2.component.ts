@@ -18,4 +18,8 @@ export class View2Component implements OnInit{
     this.bundleId = this.activatedRoute.snapshot.params['bundleId']
   }
 
+  getData(bundleId: string) {
+    
+  }
+
 }
