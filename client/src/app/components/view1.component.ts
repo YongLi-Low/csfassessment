@@ -37,10 +37,13 @@ export class View1Component implements OnInit {
       .then((result) => {
         this.bundleId = result
         console.log(this.bundleId)
-        this.router.navigate(['/upload/', this.bundleId.bundleId])
+        this.router.navigate(['/upload/', this.bundleId.bundleId]);
       })
       .catch(error => console.log(error))
     
-    
+  }
+
+  navigate() {
+
   }
 }
