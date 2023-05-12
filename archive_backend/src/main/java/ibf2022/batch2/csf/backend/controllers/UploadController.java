@@ -10,11 +10,13 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -106,7 +108,14 @@ public class UploadController {
 		// https://yongli033.sgp1.digitaloceanspaces.com/d80d4739-Michael%20Jacksons%20Moonwalker.png
 
 	// TODO: Task 5
-	
+	@GetMapping(path = "/search", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> getBundleByBundleId(String bundleId) {
+		Document result = archiveRepo.getBundleByBundleId(bundleId);
+
+		String res = result.toJson().toString();
+
+		return ResponseEntity.status(HttpStatus.OK).body(res);
+	}
 
 	// TODO: Task 6
 
