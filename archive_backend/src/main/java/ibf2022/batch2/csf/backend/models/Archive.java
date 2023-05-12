@@ -1,16 +1,14 @@
 package ibf2022.batch2.csf.backend.models;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.json.Json;
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObject;
-import jakarta.json.JsonObjectBuilder;
 
 public class Archive {
     private String bundleId;
-    private LocalDateTime date;
+    private String date;
     private String name;
     private String title;
     private String comments;
@@ -22,10 +20,10 @@ public class Archive {
     public void setBundleId(String bundleId) {
         this.bundleId = bundleId;
     }
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
     public String getName() {
@@ -62,7 +60,7 @@ public class Archive {
 
         JsonObject obj = Json.createObjectBuilder()
                         .add("bundleId", getBundleId())
-                        .add("date", getDate().toString())
+                        .add("date", getDate())
                         .add("name", getName())
                         .add("title", getTitle())
                         .add("comments", getComments())

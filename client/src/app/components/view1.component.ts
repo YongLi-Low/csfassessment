@@ -18,6 +18,7 @@ export class View1Component implements OnInit {
 
   form!: FormGroup
   uploadResult!: UploadResult
+  bundleId!: any
 
   constructor(private fb: FormBuilder, private router: Router, private uploadSvc: UploadService) { }
 
@@ -26,7 +27,7 @@ export class View1Component implements OnInit {
         name: this.fb.control('', [Validators.required]),
         title: this.fb.control('', [Validators.required]),
         comments: this.fb.control(''),
-        zipFile: this.fb.control('', [Validators.required])
+        zipFile: this.fb.control('',)
       })
   }
 
@@ -34,9 +35,12 @@ export class View1Component implements OnInit {
     const formVal = this.form.value
     this.uploadSvc.upload(formVal, this.zipFile)
       .then((result) => {
-        this.uploadResult = result
-        console.log("success upload")
+        this.bundleId = result
+        console.log(this.bundleId)
+        this.router.navigate(['/upload/', this.bundleId.bundleId])
       })
       .catch(error => console.log(error))
+    
+    
   }
 }
