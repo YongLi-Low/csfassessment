@@ -1,0 +1,29 @@
+<div>
+    <form [formGroup]="form" (ngSubmit)="upload()">
+        <div align="left">
+            <label for="name">Name: </label>
+            <input type="text" size="30" placeholder="Name" formControlName="name">
+        </div>
+        <br>
+        <div align="left">
+            <label for="title">Title: </label>
+            <input type="text" size="30" placeholder="Title" formControlName="title">
+        </div>
+        <br>
+        <div align="left">
+            <label for="comments">Comments: </label>
+            <textarea name="comments" cols="30" rows="10" placeholder="Your comments in here" formControlName="comments"></textarea>
+        </div>
+        <br>
+        <div align="left">
+            <label for="zipFile">Archive: </label>
+            <input type="file" name="zipFile" accept=".zip" #file>
+        </div>
+        <br>
+        <div>
+            <button type="button" [routerLink]="['/']">Cancel</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" [disabled]="form.invalid">Submit</button>
+        </div>
+    </form>
+</div>
